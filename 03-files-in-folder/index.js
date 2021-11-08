@@ -10,9 +10,7 @@ function listFiles(pathSecretFolder) {
             const strPathFile = path.join(pathSecretFolder,file);
             fs.stat(strPathFile, (errStat, status) => {
                 if(errStat) throw errStat;
-                if (status.isDirectory()){
-                    listFiles(strPathFile);
-                } else if(status.isFile()) {
+                 if(status.isFile()) {
                     let fileSizeInKb = Math.round((status.size / 1024) * 100) / 100;
                     let fileName = path.basename(file).split('.');
                     let fileExtand = fileName[fileName.length - 1];
